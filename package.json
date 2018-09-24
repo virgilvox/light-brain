@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "johnny-five": "^1.0.0",
-    "osc": "^2.2.4"
+    "osc": "^2.2.4",
+    "playground-io": "^0.6.0"
   }
 }

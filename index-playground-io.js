@@ -1,5 +1,11 @@
+var Playground = require("playground-io");
 var five = require("johnny-five");
-var board = new five.Board();
+var board = new five.Board({
+  io: new Playground({
+    port: "/dev/tty.usbmodem1411",
+    reportVersionTimeout: 200
+  })
+});
 var osc = require("osc");
 
 var udpPort = new osc.UDPPort({
@@ -10,7 +16,6 @@ var udpPort = new osc.UDPPort({
 
 board.on("ready", function() {
 
-  // Create a standard `led` component instance
   var led = new five.Led(4);
 
   udpPort.open();
@@ -22,8 +27,13 @@ board.on("ready", function() {
       if(address.includes("/muse/elements/beta_absolute")){
         var value = oscMsg.args[0].value;
         console.log(value);
-        if(value > 0.29){ console.log("on"); led.on();}
-        if(value < 0.29){ console.log("off"); led.off();}
+        if(value > 0.29){
+          console.log("on");
+          led.on();
+        }else {
+          console.log("off");
+          led.off();
+        }
       }
     });
   });
