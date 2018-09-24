@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "johnny-five": "^1.0.0",
     "osc": "^2.2.4"
   }
 }
