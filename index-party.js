@@ -29,7 +29,7 @@ board.on("ready", function() {
       if(address.includes("/muse/elements/beta_absolute")){
         var value = oscMsg.args[0].value;
         console.log(value);
-        if(value > 0.29){
+        if(value > 0.4){
           console.log("on");
           led.on();
         }else {
