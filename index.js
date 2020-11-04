@@ -3,14 +3,14 @@ var board = new five.Board();
 var osc = require("osc");
 
 var udpPort = new osc.UDPPort({
-    localAddress: "0.0.0.0",
+    localAddress: "0.0.0.0", // 0.0.0.0 if able to plug in compu's IP to Mind Monitor app
     localPort: 5000,
     metadata: true
 });
 
 board.on("ready", function() {
 
-  var led = new five.Led(4);
+  var led = new five.Led(13); // standard arduino built-in LED pin
 
   udpPort.open();
 
